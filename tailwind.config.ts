@@ -115,13 +115,22 @@ export default {
 						transform: 'scale(1)',
 						opacity: '1'
 					}
+				},
+				'draw-circle': {
+					'0%': {
+						strokeDasharray: '0 176'
+					},
+					'100%': {
+						strokeDasharray: 'inherit'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
-				'scale-in': 'scale-in 0.3s ease-out'
+				'scale-in': 'scale-in 0.3s ease-out',
+				'draw-circle': 'draw-circle 2s ease-out'
 			}
 		}
 	},

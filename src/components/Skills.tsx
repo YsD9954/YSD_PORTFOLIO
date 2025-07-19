@@ -1,54 +1,27 @@
-import { Progress } from "@/components/ui/progress";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Code, Palette, Server, Smartphone } from "lucide-react";
 
-const skillCategories = [
-  {
-    title: "Frontend Development",
-    icon: Code,
-    skills: [
-      { name: "React/Next.js", level: 90 },
-      { name: "TypeScript", level: 85 },
-      { name: "Tailwind CSS", level: 95 },
-      { name: "Vue.js", level: 80 }
-    ]
-  },
-  {
-    title: "Backend Development",
-    icon: Server,
-    skills: [
-      { name: "Node.js", level: 85 },
-      { name: "Python", level: 80 },
-      { name: "PostgreSQL", level: 75 },
-      { name: "MongoDB", level: 85 }
-    ]
-  },
-  {
-    title: "UI/UX Design",
-    icon: Palette,
-    skills: [
-      { name: "Figma", level: 90 },
-      { name: "Adobe XD", level: 85 },
-      { name: "Prototyping", level: 88 },
-      { name: "User Research", level: 75 }
-    ]
-  },
-  {
-    title: "Mobile Development",
-    icon: Smartphone,
-    skills: [
-      { name: "React Native", level: 80 },
-      { name: "Flutter", level: 70 },
-      { name: "iOS Development", level: 65 },
-      { name: "Android Development", level: 68 }
-    ]
-  }
-];
-
-const technologies = [
-  "JavaScript", "TypeScript", "React", "Vue.js", "Node.js", "Python",
-  "PostgreSQL", "MongoDB", "Docker", "AWS", "Git", "Figma"
+const skills = [
+  { name: "JavaScript", level: 90, logo: "⚡" },
+  { name: "TypeScript", level: 85, logo: "🔷" },
+  { name: "React", level: 92, logo: "⚛️" },
+  { name: "Next.js", level: 88, logo: "▲" },
+  { name: "Vue.js", level: 80, logo: "💚" },
+  { name: "Node.js", level: 85, logo: "🟢" },
+  { name: "Python", level: 83, logo: "🐍" },
+  { name: "Java", level: 78, logo: "☕" },
+  { name: "PostgreSQL", level: 75, logo: "🐘" },
+  { name: "MongoDB", level: 85, logo: "🍃" },
+  { name: "Docker", level: 80, logo: "🐳" },
+  { name: "AWS", level: 75, logo: "☁️" },
+  { name: "Git", level: 90, logo: "📝" },
+  { name: "Figma", level: 85, logo: "🎨" },
+  { name: "Tailwind CSS", level: 95, logo: "💨" },
+  { name: "Express.js", level: 82, logo: "🚀" },
+  { name: "React Native", level: 78, logo: "📱" },
+  { name: "Firebase", level: 80, logo: "🔥" },
+  { name: "GraphQL", level: 72, logo: "📊" },
+  { name: "Redux", level: 88, logo: "🔄" }
 ];
 
 export const Skills = () => {
@@ -57,49 +30,98 @@ export const Skills = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
-            Skills & Expertise
+            Skills & Technologies
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            I'm constantly learning and improving my skills. Here's what I bring to the table.
+            A comprehensive overview of the technologies and tools I work with to build amazing digital experiences.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {skillCategories.map((category, index) => (
-            <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-glow-primary/10 transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-xl">
-                  <category.icon className="h-6 w-6 text-primary" />
-                  {category.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground">{skill.name}</span>
-                      <span className="text-muted-foreground">{skill.level}%</span>
-                    </div>
-                    <Progress value={skill.level} className="h-2" />
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          {skills.map((skill, index) => (
+            <Card 
+              key={index} 
+              className="group bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-glow-primary/20 transition-all duration-500 hover:scale-105 hover:bg-card/70 animate-fade-in cursor-pointer"
+              style={{ 
+                animationDelay: `${index * 100}ms`,
+                animationFillMode: 'both'
+              }}
+            >
+              <CardContent className="p-6 text-center space-y-4">
+                {/* Logo with animation */}
+                <div className="text-4xl group-hover:scale-125 group-hover:rotate-12 transition-transform duration-300">
+                  {skill.logo}
+                </div>
+                
+                {/* Skill name */}
+                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                  {skill.name}
+                </h3>
+                
+                {/* Progress circle */}
+                <div className="relative w-16 h-16 mx-auto">
+                  <svg className="w-16 h-16 transform -rotate-90" viewBox="0 0 64 64">
+                    {/* Background circle */}
+                    <circle
+                      cx="32"
+                      cy="32"
+                      r="28"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                      fill="none"
+                      className="text-muted/20"
+                    />
+                    {/* Progress circle */}
+                    <circle
+                      cx="32"
+                      cy="32"
+                      r="28"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                      fill="none"
+                      strokeDasharray={`${skill.level * 1.76} 176`}
+                      className="text-primary group-hover:text-accent transition-colors duration-500"
+                      style={{
+                        strokeLinecap: 'round',
+                        animation: `draw-circle 1.5s ease-out ${index * 100}ms both`
+                      }}
+                    />
+                  </svg>
+                  {/* Percentage text */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                      {skill.level}%
+                    </span>
                   </div>
-                ))}
+                </div>
+                
+                {/* Proficiency badge */}
+                <Badge 
+                  variant={skill.level >= 85 ? "default" : skill.level >= 75 ? "secondary" : "outline"}
+                  className="text-xs group-hover:scale-110 transition-transform duration-300"
+                >
+                  {skill.level >= 85 ? "Expert" : skill.level >= 75 ? "Advanced" : "Intermediate"}
+                </Badge>
               </CardContent>
             </Card>
           ))}
         </div>
         
-        <div className="text-center">
-          <h3 className="text-2xl font-semibold mb-6 text-foreground">Technologies I Work With</h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {technologies.map((tech, index) => (
-              <Badge 
-                key={index} 
-                variant="secondary" 
-                className="px-4 py-2 text-sm hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
-              >
-                {tech}
-              </Badge>
-            ))}
+        {/* Floating skill indicators */}
+        <div className="mt-16 text-center">
+          <div className="inline-flex items-center gap-8 p-6 bg-card/30 backdrop-blur-sm rounded-full border border-border/50">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+              <span className="text-sm text-muted-foreground">Expert (85%+)</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 bg-secondary rounded-full animate-pulse delay-300"></div>
+              <span className="text-sm text-muted-foreground">Advanced (75%+)</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 bg-muted rounded-full animate-pulse delay-700"></div>
+              <span className="text-sm text-muted-foreground">Intermediate</span>
+            </div>
           </div>
         </div>
       </div>
