@@ -120,6 +120,8 @@ All colors MUST be HSL.
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+}
+
 /* Custom Scrollbar for Skills Carousel */
 .custom-scrollbar::-webkit-scrollbar {
   height: 12px;
