@@ -1,6 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Github, ExternalLink } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const skills = [
   { name: "React", level: 92, logo: "⚛️", category: "Frontend", githubLink: "https://github.com/yourusername/react-projects" },
@@ -34,77 +40,85 @@ export const Skills = () => {
           </p>
         </div>
         
-        {/* Professional skills grid */}
-        <div className="relative">
-          <div className="flex space-x-6 overflow-x-auto pb-4 scrollbar-hide">
+        {/* Auto-sliding skills carousel */}
+        <Carousel
+          plugins={[
+            Autoplay({
+              delay: 3000,
+              stopOnInteraction: true,
+              stopOnMouseEnter: true,
+            }),
+          ]}
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-2 md:-ml-4">
             {skills.map((skill, index) => (
-              <Card 
-                key={skill.name}
-                className="group min-w-[280px] flex-shrink-0 bg-card/60 backdrop-blur-sm border hover:border-primary/30 transition-all duration-300 hover:shadow-lg"
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <Badge 
-                      variant="secondary" 
-                      className="text-xs font-medium"
-                    >
-                      {skill.category}
-                    </Badge>
-                    
-                    <a
-                      href={skill.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary transition-colors duration-200"
-                      title="View Projects"
-                    >
-                      <Github size={18} />
-                    </a>
-                  </div>
-                  
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="text-3xl">
-                      {skill.logo}
-                    </div>
-                    
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-lg text-foreground mb-1">
-                        {skill.name}
-                      </h3>
+              <CarouselItem key={skill.name} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                <Card className="group bg-card/60 backdrop-blur-sm border hover:border-primary/30 transition-all duration-300 hover:shadow-lg h-full">
+                  <CardContent className="p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <Badge 
+                        variant="secondary" 
+                        className="text-xs font-medium"
+                      >
+                        {skill.category}
+                      </Badge>
                       
                       <a
                         href={skill.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+                        className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                        title="View Projects"
                       >
-                        <ExternalLink size={14} />
-                        View Projects
+                        <Github size={18} />
                       </a>
                     </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Proficiency</span>
-                      <span className="font-medium text-foreground">{skill.level}%</span>
+                    
+                    <div className="flex items-center space-x-4 mb-4">
+                      <div className="text-3xl">
+                        {skill.logo}
+                      </div>
+                      
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-lg text-foreground mb-1">
+                          {skill.name}
+                        </h3>
+                        
+                        <a
+                          href={skill.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+                        >
+                          <ExternalLink size={14} />
+                          View Projects
+                        </a>
+                      </div>
                     </div>
-                    <div className="w-full bg-muted rounded-full h-2">
-                      <div 
-                        className="h-full bg-gradient-primary rounded-full transition-all duration-500"
-                        style={{ width: `${skill.level}%` }}
-                      />
+                    
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Proficiency</span>
+                        <span className="font-medium text-foreground">{skill.level}%</span>
+                      </div>
+                      <div className="w-full bg-muted rounded-full h-2">
+                        <div 
+                          className="h-full bg-gradient-primary rounded-full transition-all duration-500"
+                          style={{ width: `${skill.level}%` }}
+                        />
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </CarouselItem>
             ))}
-          </div>
-          
-          {/* Gradient overlays for infinite scroll effect */}
-          <div className="absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-background via-background/80 to-transparent pointer-events-none z-10" />
-          <div className="absolute right-0 top-0 w-20 h-full bg-gradient-to-l from-background via-background/80 to-transparent pointer-events-none z-10" />
-        </div>
+          </CarouselContent>
+        </Carousel>
       </div>
     </section>
   );
