@@ -1,23 +1,24 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Github, ExternalLink } from "lucide-react";
 
 const skills = [
-  { name: "React", level: 92, logo: "⚛️", category: "Frontend" },
-  { name: "TypeScript", level: 85, logo: "🔷", category: "Language" },
-  { name: "Node.js", level: 85, logo: "🟢", category: "Backend" },
-  { name: "Python", level: 83, logo: "🐍", category: "Language" },
-  { name: "MongoDB", level: 85, logo: "🍃", category: "Database" },
-  { name: "AWS", level: 75, logo: "☁️", category: "Cloud" },
-  { name: "Docker", level: 80, logo: "🐳", category: "DevOps" },
-  { name: "Figma", level: 85, logo: "🎨", category: "Design" },
-  { name: "Next.js", level: 88, logo: "🔺", category: "Frontend" },
-  { name: "PostgreSQL", level: 80, logo: "🐘", category: "Database" },
-  { name: "Redis", level: 75, logo: "🔴", category: "Database" },
-  { name: "GraphQL", level: 78, logo: "🎯", category: "API" },
-  { name: "Git", level: 90, logo: "🌿", category: "Tools" },
-  { name: "Kubernetes", level: 70, logo: "⚙️", category: "DevOps" },
-  { name: "Firebase", level: 82, logo: "🔥", category: "Backend" },
-  { name: "Tailwind", level: 95, logo: "💨", category: "CSS" }
+  { name: "React", level: 92, logo: "⚛️", category: "Frontend", githubLink: "https://github.com/yourusername/react-projects" },
+  { name: "TypeScript", level: 85, logo: "🔷", category: "Language", githubLink: "https://github.com/yourusername/typescript-projects" },
+  { name: "Node.js", level: 85, logo: "🟢", category: "Backend", githubLink: "https://github.com/yourusername/nodejs-projects" },
+  { name: "Python", level: 83, logo: "🐍", category: "Language", githubLink: "https://github.com/yourusername/python-projects" },
+  { name: "MongoDB", level: 85, logo: "🍃", category: "Database", githubLink: "https://github.com/yourusername/mongodb-projects" },
+  { name: "AWS", level: 75, logo: "☁️", category: "Cloud", githubLink: "https://github.com/yourusername/aws-projects" },
+  { name: "Docker", level: 80, logo: "🐳", category: "DevOps", githubLink: "https://github.com/yourusername/docker-projects" },
+  { name: "Figma", level: 85, logo: "🎨", category: "Design", githubLink: "https://github.com/yourusername/design-projects" },
+  { name: "Next.js", level: 88, logo: "🔺", category: "Frontend", githubLink: "https://github.com/yourusername/nextjs-projects" },
+  { name: "PostgreSQL", level: 80, logo: "🐘", category: "Database", githubLink: "https://github.com/yourusername/postgresql-projects" },
+  { name: "Redis", level: 75, logo: "🔴", category: "Database", githubLink: "https://github.com/yourusername/redis-projects" },
+  { name: "GraphQL", level: 78, logo: "🎯", category: "API", githubLink: "https://github.com/yourusername/graphql-projects" },
+  { name: "Git", level: 90, logo: "🌿", category: "Tools", githubLink: "https://github.com/yourusername" },
+  { name: "Kubernetes", level: 70, logo: "⚙️", category: "DevOps", githubLink: "https://github.com/yourusername/k8s-projects" },
+  { name: "Firebase", level: 82, logo: "🔥", category: "Backend", githubLink: "https://github.com/yourusername/firebase-projects" },
+  { name: "Tailwind", level: 95, logo: "💨", category: "CSS", githubLink: "https://github.com/yourusername/tailwind-projects" }
 ];
 
 export const Skills = () => {
@@ -57,20 +58,46 @@ export const Skills = () => {
                        style={{ animationDelay: `${index * 300}ms` }} />
                   
                   <CardContent className="p-6 text-center space-y-4 relative z-10">
-                    <Badge 
-                      variant="outline" 
-                      className="text-xs bg-primary/10 text-primary border-primary/20 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300"
-                    >
-                      {skill.category}
-                    </Badge>
+                    <div className="flex justify-between items-start">
+                      <Badge 
+                        variant="outline" 
+                        className="text-xs bg-primary/10 text-primary border-primary/20 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300"
+                      >
+                        {skill.category}
+                      </Badge>
+                      
+                      {/* GitHub link */}
+                      <a
+                        href={skill.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 text-muted-foreground hover:text-primary"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Github size={16} />
+                      </a>
+                    </div>
                     
                     <div className="text-4xl group-hover:scale-150 group-hover:rotate-12 transition-all duration-700 group-hover:drop-shadow-2xl animate-wiggle">
                       {skill.logo}
                     </div>
                     
-                    <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors duration-300 group-hover:scale-105">
-                      {skill.name}
-                    </h3>
+                    <div className="space-y-2">
+                      <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors duration-300 group-hover:scale-105">
+                        {skill.name}
+                      </h3>
+                      
+                      {/* View Projects button */}
+                      <a
+                        href={skill.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors duration-300 opacity-0 group-hover:opacity-100"
+                      >
+                        <ExternalLink size={12} />
+                        View Projects
+                      </a>
+                    </div>
                     
                     {/* Enhanced progress bar with glow */}
                     <div className="space-y-2">
