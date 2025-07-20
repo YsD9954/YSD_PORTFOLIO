@@ -56,9 +56,9 @@ export const Skills = () => {
             duration: 3800,
             dragFree: true,
           }}
-          className="w-full overflow-x-auto custom-scrollbar"
+          className="w-full"
         >
-          <CarouselContent className="-ml-2 md:-ml-4">
+          <CarouselContent className="-ml-2 md:-ml-4 custom-scrollbar">
             {skills.map((skill, index) => (
               <CarouselItem key={skill.name} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                 <Card className="group bg-card/60 backdrop-blur-sm border hover:border-primary/30 transition-all duration-300 hover:shadow-lg h-full">
