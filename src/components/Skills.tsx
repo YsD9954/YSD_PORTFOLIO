@@ -44,7 +44,7 @@ export const Skills = () => {
         <Carousel
           plugins={[
             Autoplay({
-              delay: 4000,
+              delay: 6000,
               stopOnInteraction: true,
               stopOnMouseEnter: true,
             }),
