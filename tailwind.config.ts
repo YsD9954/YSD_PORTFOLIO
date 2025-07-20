@@ -139,6 +139,56 @@ export default {
 					'100%': {
 						width: 'var(--target-width)'
 					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0px)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
+				},
+				'wiggle': {
+					'0%, 100%': {
+						transform: 'rotate(-3deg)'
+					},
+					'50%': {
+						transform: 'rotate(3deg)'
+					}
+				},
+				'bounce-slow': {
+					'0%, 100%': {
+						transform: 'translateY(0)',
+						animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
+					},
+					'50%': {
+						transform: 'translateY(-25%)',
+						animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
+					}
+				},
+				'pulse-glow': {
+					'0%, 100%': {
+						opacity: '0.5'
+					},
+					'50%': {
+						opacity: '1'
+					}
+				},
+				'pulse-bar': {
+					'0%, 100%': {
+						transform: 'scaleY(1)'
+					},
+					'50%': {
+						transform: 'scaleY(1.05)'
+					}
+				},
+				'shine': {
+					'0%': {
+						transform: 'translateX(-100%)'
+					},
+					'100%': {
+						transform: 'translateX(100%)'
+					}
 				}
 			},
 			animation: {
@@ -148,7 +198,13 @@ export default {
 				'scale-in': 'scale-in 0.3s ease-out',
 				'draw-circle': 'draw-circle 2s ease-out',
 				'scroll-horizontal': 'scroll-horizontal 30s linear infinite',
-				'expand-width': 'expand-width 1.5s ease-out'
+				'expand-width': 'expand-width 1.5s ease-out',
+				'float': 'float 3s ease-in-out infinite',
+				'wiggle': 'wiggle 1s ease-in-out infinite',
+				'bounce-slow': 'bounce-slow 3s infinite',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+				'pulse-bar': 'pulse-bar 2s ease-in-out infinite',
+				'shine': 'shine 2s ease-in-out infinite'
 			}
 		}
 	},
