@@ -44,7 +44,7 @@ export const Skills = () => {
         <Carousel
           plugins={[
             Autoplay({
-              delay: 750,
+              delay: 1200,
               stopOnInteraction: false,
               stopOnMouseEnter: true,
               playOnInit: true,
@@ -53,7 +53,7 @@ export const Skills = () => {
           opts={{
             align: "start",
             loop: true,
-            duration: 3500,
+            duration: 4000,
             dragFree: true,
           }}
           className="w-full"
