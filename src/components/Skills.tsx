@@ -56,7 +56,7 @@ export const Skills = () => {
             duration: 3800,
             dragFree: true,
           }}
-          className="w-full"
+          className="w-full overflow-x-auto scrollbar-thin scrollbar-thumb-primary/30 scrollbar-track-transparent"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
             {skills.map((skill, index) => (
