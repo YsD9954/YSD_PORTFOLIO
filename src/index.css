@@ -155,3 +155,5 @@ All colors MUST be HSL.
 .custom-scrollbar::-webkit-scrollbar-thumb:active {
   background: hsl(var(--accent) / 0.9);
 }
+
+/* Force server restart */
