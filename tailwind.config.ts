@@ -123,6 +123,22 @@ export default {
 					'100%': {
 						strokeDasharray: 'inherit'
 					}
+				},
+				'scroll-horizontal': {
+					'0%': {
+						transform: 'translateX(0)'
+					},
+					'100%': {
+						transform: 'translateX(-50%)'
+					}
+				},
+				'expand-width': {
+					'0%': {
+						width: '0%'
+					},
+					'100%': {
+						width: 'var(--target-width)'
+					}
 				}
 			},
 			animation: {
@@ -130,7 +146,9 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
 				'scale-in': 'scale-in 0.3s ease-out',
-				'draw-circle': 'draw-circle 2s ease-out'
+				'draw-circle': 'draw-circle 2s ease-out',
+				'scroll-horizontal': 'scroll-horizontal 30s linear infinite',
+				'expand-width': 'expand-width 1.5s ease-out'
 			}
 		}
 	},
