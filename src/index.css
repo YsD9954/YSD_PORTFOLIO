@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -122,28 +123,35 @@ All colors MUST be HSL.
   }
 }
 
-/* Custom Scrollbar for Skills Carousel */
+/* Custom Manual Scrollbar for Skills Carousel */
+.custom-scrollbar {
+  scrollbar-width: auto;
+  scrollbar-color: hsl(var(--primary) / 0.8) hsl(var(--muted) / 0.4);
+}
+
 .custom-scrollbar::-webkit-scrollbar {
-  height: 12px;
+  height: 14px;
+  display: block !important;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: hsl(var(--muted) / 0.3);
-  border-radius: 6px;
+  background: hsl(var(--muted) / 0.4);
+  border-radius: 8px;
+  margin: 0 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary) / 0.6);
-  border-radius: 6px;
+  background: hsl(var(--primary) / 0.8);
+  border-radius: 8px;
   border: 2px solid hsl(var(--background));
+  min-width: 40px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary) / 0.8);
+  background: hsl(var(--primary) / 1);
+  cursor: pointer;
 }
 
-/* Firefox scrollbar */
-.custom-scrollbar {
-  scrollbar-width: auto;
-  scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--muted) / 0.3);
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background: hsl(var(--accent) / 0.9);
 }
