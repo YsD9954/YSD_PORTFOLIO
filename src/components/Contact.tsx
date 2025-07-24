@@ -1,8 +1,21 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, Phone, Github, Linkedin, Twitter } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  Github,
+  Linkedin,
+  Twitter,
+} from "lucide-react";
 
 export const Contact = () => {
   return (
@@ -13,10 +26,13 @@ export const Contact = () => {
             Interested in collaborating?
           </h2>
           <h3 className="text-xl font-bold mb-3 text-foreground">
-              Let's Work Together.Let's discuss how we can bring your ideas to life.I'd love to hear from you. 
+            Let's Work Together. Let's discuss how we can bring your ideas to life. I'd love to hear from you.
           </h3>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Have a project in mind? I'd love to hear from you. Let's discuss how we can bring your ideas to life.
+          </p>
         </div>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <Card className="bg-card/50 backdrop-blur-sm border-border/50">
@@ -33,60 +49,53 @@ export const Contact = () => {
               </div>
               <Input placeholder="Email Address" className="bg-background/50" />
               <Input placeholder="Subject" className="bg-background/50" />
-              <Textarea 
-                placeholder="Your message..." 
-                className="min-h-32 bg-background/50"
-              />
+              <Textarea placeholder="Your message..." className="min-h-32 bg-background/50" />
               <Button variant="hero" size="lg" className="w-full">
                 Send Message
               </Button>
             </CardContent>
           </Card>
-          
+
           {/* Contact Information */}
           <div className="space-y-8">
             <Card className="bg-card/50 backdrop-blur-sm border-border/50">
-              <CardContent className="p-6">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <Mail className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground">Email</h3>
-                      <p className="text-muted-foreground">yashdoke1234@gmail.com</p>
-                    </div>
+              <CardContent className="p-6 space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <Mail className="h-6 w-6 text-primary" />
                   </div>
-                  
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                      <Phone className="h-6 w-6 text-accent" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground">Phone</h3>
-                      <p className="text-muted-foreground">+91 8652040439</p>
-                    </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Email</h3>
+                    <p className="text-muted-foreground">yashdoke1234@gmail.com</p>
                   </div>
-                  
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <MapPin className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground">Location</h3>
-                      <p className="text-muted-foreground">Mumbai, India</p>
-                    </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+                    <Phone className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Phone</h3>
+                    <p className="text-muted-foreground">+91 8652040439</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <MapPin className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Location</h3>
+                    <p className="text-muted-foreground">Mumbai, India</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
-            
+
             <Card className="bg-card/50 backdrop-blur-sm border-border/50">
               <CardHeader>
                 <CardTitle>Follow Me</CardTitle>
-                <CardDescription>
-                  Stay connected and follow my journey
-                </CardDescription>
+                <CardDescription>Stay connected and follow my journey</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex gap-4">

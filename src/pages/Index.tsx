@@ -15,13 +15,12 @@ const Index = () => {
           <Hero />
         </section>
         <About />
-        <Internships/>
+        <Internships />
         <Skills />
         <Projects />
-
         <Contact />
       </main>
-      
+
       {/* Footer */}
       <footer className="py-8 bg-card/30 border-t border-border/50">
         <div className="container mx-auto px-6 text-center">

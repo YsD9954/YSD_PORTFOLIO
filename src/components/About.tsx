@@ -1,3 +1,4 @@
+// About.tsx (Fixed version)
 "use client";
 
 import {
@@ -14,6 +15,7 @@ import {
   Users,
   MapPin,
   FileText,
+  Calendar,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -23,8 +25,9 @@ const educationTimeline = [
     level: "Secondary School",
     institution: "S. H. Jondhale Vidyamandir",
     year: "2010 - 2020",
-    location: "Dombivli,Thane",
+    location: "Dombivli, Thane",
     percentage: "91.80%",
+    highlights: [],
   },
   {
     level: "Higher Secondary",
@@ -32,18 +35,18 @@ const educationTimeline = [
     year: "2020 - 2022",
     location: "Dombivli, Thane",
     percentage: "86.50%",
+    highlights: [],
   },
   {
-    level:
-      "B.TECH in Electronics and Telecommunication With Honours in AIML",
+    level: "B.TECH in Electronics and Telecommunication With Honours in AIML",
     institution: "D J Sanghvi College Of Engineering",
     year: "2022 - 2026",
     location: "Vile Parle, Mumbai",
     percentage: "8.91 CGPA",
+    highlights: [],
   },
 ];
 
-// Extracurricular Data
 const extracurriculars = [
   {
     title: "Team DJS ARYA",
@@ -86,6 +89,10 @@ const extracurriculars = [
   },
 ];
 
+const societies = [];
+const participations = [];
+const certifications = [];
+
 export const About = () => {
   return (
     <section id="about" className="py-20 bg-background">
@@ -95,10 +102,9 @@ export const About = () => {
             About Me
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          I’m a passionate Electronics & Telecommunication Engineering student with AI & ML Honors, 
-          driven by innovation and focused on transforming complex challenges into seamless tech solutions
-          by integrating embedded hardware, AI, and software.
-
+            I’m a passionate Electronics & Telecommunication Engineering student with AI & ML Honors,
+            driven by innovation and focused on transforming complex challenges into seamless tech solutions
+            by integrating embedded hardware, AI, and software.
           </p>
         </div>
 
@@ -143,7 +149,17 @@ export const About = () => {
                           </span>
                         </div>
                       </CardHeader>
-                      <CardContent></CardContent>
+                      <CardContent>
+                        {edu.highlights.length > 0 && (
+                          <div className="flex flex-wrap gap-2">
+                            {edu.highlights.map((highlight, idx) => (
+                              <Badge key={idx} variant="outline" className="text-xs">
+                                {highlight}
+                              </Badge>
+                            ))}
+                          </div>
+                        )}
+                      </CardContent>
                     </Card>
                   </div>
                 ))}
@@ -151,7 +167,7 @@ export const About = () => {
             </div>
           </div>
 
-          {/* Extracurriculars - NOW GRID BASED */}
+          {/* Extracurriculars */}
           <div className="space-y-8">
             <h3 className="text-2xl font-semibold text-foreground flex items-center gap-2">
               <Trophy className="h-6 w-6 text-primary" />
@@ -182,7 +198,6 @@ export const About = () => {
                         <CardDescription className="text-sm text-muted-foreground leading-tight">
                           {item.description}
                         </CardDescription>
-                        
                       </div>
                     </CardHeader>
                   </Card>
