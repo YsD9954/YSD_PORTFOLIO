@@ -1,24 +1,34 @@
-import { Navigation } from "@/components/Navigation";
-import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
-import { Skills } from "@/components/Skills";
-import { Internships } from "@/components/Internships";
-import { Projects } from "@/components/Projects";
-import { Contact } from "@/components/Contact";
+import Navigation  from "@/components/Navigation";
+import  Hero  from "@/components/Hero";
+import  About  from "@/components/About";
+import  Skills  from "@/components/Skills";
+import  Internships  from "@/components/Internships";
+import  Projects  from "@/components/Projects";
+import  Contact  from "@/components/Contact";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen  w-full bg-gradient-to-r from-purple-600 via-blue-500 to-indigo-600 bg-[length:200%_200%] animate-gradient-move">
       <Navigation />
       <main>
         <section id="hero">
-          <Hero />
-        </section>
+        <Hero />
+      </section>
+      <section id="about">
         <About />
+      </section>
+      <section id="internships">
         <Internships />
+      </section>
+      <section id="skills">
         <Skills />
+      </section>
+      <section id="projects">
         <Projects />
+      </section>
+      <section id="contact">
         <Contact />
+      </section>
       </main>
 
       {/* Footer */}

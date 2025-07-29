@@ -64,7 +64,10 @@ const internships: Internship[] = [
 
 export const Internships = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section
+      id="internships"
+      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+    >
       <motion.div
         className="text-center mb-16"
         initial={{ opacity: 0, y: 40 }}
@@ -72,12 +75,11 @@ export const Internships = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-fuchsia-500 to-purple-500 bg-clip-text text-transparent">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent">
           Professional Experience
         </h2>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Real-world internships strengthened my technical foundation and equipped me with a versatile skill set through hands-on problem solving. 
-
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-fancy">
+          Real-world internships strengthened my technical foundation and equipped me with a versatile skill set through hands-on problem solving.
         </p>
       </motion.div>
 
@@ -91,9 +93,8 @@ export const Internships = () => {
             transition={{ duration: 0.5, delay: index * 0.2 }}
             whileHover={{ scale: 1.02 }}
           >
-            <Card className="bg-portfolio-card border border-border/20 hover:border-fuchsia-500 transition-all duration-300 hover:shadow-2xl hover:shadow-fuchsia-500/20 group">
-              <CardContent className="p-8">
-                {/* Header row with logo, company info, and button */}
+            <Card className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-lg shadow-md hover:border-cyan-500 transition-all duration-300 hover:shadow-cyan-500/20 group">
+              <CardContent className="p-6 md:p-8">
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center gap-4">
                     <img
@@ -101,10 +102,9 @@ export const Internships = () => {
                       alt={`${internship.company} logo`}
                       className="w-14 h-14 object-contain rounded-full border border-white/10 shadow-sm p-1"
                     />
-
                     <div>
-                      <h3 className="text-xl font-bold text-white">{internship.company}</h3>
-                      <p className="text-sm text-fuchsia-500">{internship.position}</p>
+                      <h3 className="text-xl font-semibold text-white">{internship.company}</h3>
+                      <p className="text-sm text-cyan-400 font-medium  ">{internship.position}</p>
                     </div>
                   </div>
 
@@ -112,7 +112,7 @@ export const Internships = () => {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="border border-fuchsia-600 text-fuchsia-500 hover:bg-fuchsia-600 hover:text-white transition-colors mt-1"
+                      className="border border-cyan-600 text-cyan-500 hover:bg-cyan-600 hover:text-white transition-colors mt-1"
                       onClick={() => window.open(internship.githubLink, "_blank")}
                     >
                       <Github className="w-4 h-4 mr-2" />
@@ -121,7 +121,6 @@ export const Internships = () => {
                   )}
                 </div>
 
-                {/* Duration and location */}
                 <div className="flex flex-wrap items-center gap-4 mb-6 text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4" />
@@ -133,7 +132,6 @@ export const Internships = () => {
                   </div>
                 </div>
 
-                {/* Responsibilities */}
                 <div className="mb-6">
                   <h5 className="text-sm font-semibold text-white mb-3 uppercase tracking-wide">
                     Key Responsibilities
@@ -142,16 +140,15 @@ export const Internships = () => {
                     {internship.description.map((desc, i) => (
                       <li
                         key={i}
-                        className="text-muted-foreground text-sm leading-relaxed flex items-start gap-2"
+                        className="text-muted-foreground text-sm leading-relaxed flex items-start gap-2 font-[Poppins]"
                       >
-                        <span className="w-1 h-1 bg-fuchsia-500 rounded-full mt-2 flex-shrink-0"></span>
+                        <span className="w-1 h-1 bg-cyan-500 rounded-full mt-2 flex-shrink-0"></span>
                         {desc}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Tech Stack */}
                 <div>
                   <h5 className="text-sm font-semibold text-white mb-3 uppercase tracking-wide">
                     Technologies Used
@@ -161,7 +158,7 @@ export const Internships = () => {
                       <Badge
                         key={i}
                         variant="outline"
-                        className="border-border/30 text-muted-foreground hover:border-fuchsia-400 hover:text-fuchsia-400 transition-colors"
+                        className="border-border/30 text-muted-foreground hover:border-cyan-400 hover:text-cyan-400 transition-colors"
                       >
                         {tech}
                       </Badge>
@@ -176,3 +173,5 @@ export const Internships = () => {
     </section>
   );
 };
+
+export default Internships;

@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import tailwindcssAnimate from "tailwindcss-animate"; // ✅ Replaced require
+import tailwindcssAnimate from "tailwindcss-animate";
 
 const config: Config = {
   darkMode: ["class"],
@@ -19,6 +19,9 @@ const config: Config = {
       },
     },
     extend: {
+      zIndex: {
+        "-10": "-10",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -67,6 +70,7 @@ const config: Config = {
       backgroundImage: {
         "gradient-primary": "var(--gradient-primary)",
         "gradient-secondary": "var(--gradient-secondary)",
+        "animated-gradient": "linear-gradient(-45deg, #ff6ec4, #7873f5, #4ADEDE, #C4FCEF)",
       },
       boxShadow: {
         "glow-primary": "var(--glow-primary)",
@@ -147,6 +151,42 @@ const config: Config = {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
         },
+        blob: {
+          "0%": { transform: "translate(0px, 0px) scale(1)" },
+          "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+          "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+          "100%": { transform: "translate(0px, 0px) scale(1)" },
+        },
+        blob1: {
+          "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
+          "50%": { transform: "translate(30px, -50px) scale(1.2)" },
+        },
+        blob2: {
+          "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
+          "50%": { transform: "translate(-40px, 40px) scale(1.3)" },
+        },
+        blob3: {
+          "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
+          "50%": { transform: "translate(60px, -20px) scale(1.1)" },
+        },
+        "particle-float": {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-100vh)" },
+        },
+        pulse: {
+          "0%, 100%": { opacity: "0.1" },
+          "50%": { opacity: "0.5" },
+        },
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        // NEW animated gradient keyframe
+        "gradient-bg": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -164,10 +204,20 @@ const config: Config = {
         "pulse-bar": "pulse-bar 2s ease-in-out infinite",
         shine: "shine 2s ease-in-out infinite",
         "spin-slow": "spin-slow 20s linear infinite",
+        blob: "blob 15s ease-in-out infinite",
+        blob1: "blob1 8s infinite ease-in-out",
+        blob2: "blob2 10s infinite ease-in-out",
+        blob3: "blob3 12s infinite ease-in-out",
+        "particle-float": "particle-float 10s infinite linear",
+        glow: "glow 6s ease-in-out infinite",
+        "fade-in-up": "fadeInUp 1s ease-out both",
+        pulse: "pulse 6s ease-in-out infinite",
+        // ✅ Add this
+        "gradient-bg": "gradient-bg 15s ease infinite",
       },
     },
   },
-  plugins: [tailwindcssAnimate], // ✅ ES6 module used properly
+  plugins: [tailwindcssAnimate],
 };
 
 export default config;

@@ -1,109 +1,195 @@
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
-import profileImage from "../components/images/profile.jpg";
+import { ArrowRight, Mail } from "lucide-react";
+import { useTypewriter, Cursor } from "react-simple-typewriter";
+import ProfilePic from "../components/images/ysd_linkdinpic-Photoroom (1).jpg";
+import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Hero = () => {
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const [text] = useTypewriter({
+    words: [
+      "IoT & Embedded Systems Engineer",
+      "AI/ML Enthusiast",
+      "DSA Geek",
+      "Innovator",
+      "Tech Explorer",
+    ],
+    loop: true,
+    delaySpeed: 2000,
+  });
+
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const mouse = useRef({ x: null, y: null });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    const particles: any[] = [];
+    const numParticles = 90;
+
+    for (let i = 0; i < numParticles; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 2 + 1,
+        dx: Math.random() * 0.6 - 0.3,
+        dy: Math.random() * 0.6 - 0.3,
+      });
+    }
+
+    const connectDistance = 120;
+
+    function drawLines() {
+      for (let a = 0; a < particles.length; a++) {
+        for (let b = a + 1; b < particles.length; b++) {
+          const dx = particles[a].x - particles[b].x;
+          const dy = particles[a].y - particles[b].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < connectDistance) {
+            ctx.beginPath();
+            ctx.strokeStyle = "rgba(144, 202, 249, 0.15)";
+            ctx.lineWidth = 1;
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(particles[b].x, particles[b].y);
+            ctx.stroke();
+            ctx.closePath();
+          }
+        }
+      }
+    }
+
+    function drawMouseLines() {
+      if (mouse.current.x === null || mouse.current.y === null) return;
+
+      for (let i = 0; i < particles.length; i++) {
+        const dx = particles[i].x - mouse.current.x;
+        const dy = particles[i].y - mouse.current.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < connectDistance) {
+          ctx.beginPath();
+          ctx.strokeStyle = "rgba(0, 255, 255, 0.2)";
+          ctx.lineWidth = 0.8;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(mouse.current.x, mouse.current.y);
+          ctx.stroke();
+          ctx.closePath();
+        }
+      }
+    }
+
+    function animate() {
+      ctx.fillStyle = "#0f0c29";
+      ctx.fillRect(0, 0, width, height);
+
+      particles.forEach((p) => {
+        ctx.beginPath();
+        ctx.fillStyle = "#00bcd4";
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.closePath();
+
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x <= 0 || p.x >= width) p.dx *= -1;
+        if (p.y <= 0 || p.y >= height) p.dy *= -1;
+      });
+
+      drawLines();
+      drawMouseLines();
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    const handleResize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e]">
-      {/* Decorative Background Circles */}
-      <div className="absolute -top-20 -left-20 w-72 h-72 bg-blue-500 opacity-20 rounded-full blur-[120px] animate-ping-slow" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-pink-500 opacity-20 rounded-full blur-[120px] animate-pulse-slow" />
-      <div className="absolute -top-10 right-10 w-32 h-32 bg-cyan-400/30 rounded-full blur-2xl animate-float" />
-      <div className="absolute -bottom-10 left-10 w-28 h-28 bg-rose-500/20 rounded-full blur-2xl animate-float-slow" />
+    <section
+      id="hero"
+      className="relative w-full h-screen text-white flex items-center justify-center px-6 overflow-hidden pt-24"
+    >
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full -z-10" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Text Content */}
-          <div className="space-y-8 animate-fade-in text-center lg:text-left relative">
-            {/* Welcome Badge */}
-            <div className="absolute -top-12 left-0">
-              <div className="inline-block px-6 py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-semibold rounded-full shadow-xl animate-slide-in">
-                👋 Hi! Welcome to my portfolio
-              </div>
-            </div>
-
-            <div className="space-y-4 pt-10">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white">
-                I’m <span className="text-pink-500">Yash Doke</span>
-              </h1>
-              <h2 className="text-xl md:text-2xl text-gray-300">
-                IOT & ML ENTHUSIAST | PROBLEM SOLVER
-              </h2>
-            </div>
-
-            <p className="text-lg md:text-xl text-gray-300/80 leading-relaxed">
-              💻 Code in mind, 🔋 circuits in hand, 💡 purpose in every build!
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button
-                variant="hero"
-                size="xl"
-                onClick={() => scrollToSection("about")}
-                className="animate-pulse"
-              >
-                Learn More About Me
-                <ChevronDown className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                variant="glass"
-                size="xl"
-                onClick={() => scrollToSection("contact")}
-              >
-                Get In Touch
-              </Button>
-            </div>
-
-            <div className="flex justify-center lg:justify-start space-x-6 pt-4">
-              <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform">
-                <Github className="h-6 w-6" />
-              </Button>
-              <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform">
-                <Linkedin className="h-6 w-6" />
-              </Button>
-              <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform">
-                <Mail className="h-6 w-6" />
-              </Button>
-            </div>
+      <div className="max-w-6xl w-full z-10 space-y-10">
+        <div className="flex flex-col md:flex-row items-center md:items-start md:justify-center gap-4 animate-fade-in-up">
+          <div className="relative w-[200px] h-[200px] overflow-hidden rounded-full border-[4px] border-cyan-500 shadow-lg shadow-cyan-500/30 animate-none">
+            <img
+              src={ProfilePic}
+              alt="Profile"
+              className="absolute top-1/2 left-1/2 w-[220px] h-[220px] transform -translate-x-1/2 -translate-y-1/2 object-cover"
+            />
           </div>
 
-          {/* Right - Profile Image with Effects */}
-          <div className="flex justify-center lg:justify-end animate-fade-in">
-            <div className="relative w-72 h-[450px] rounded-3xl p-1 bg-background shadow-xl transition-all duration-300 hover:scale-105 group">
-              {/* Animated Circles */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-80 h-80 rounded-full border border-purple-400/40 animate-pulse-slow blur-sm group-hover:scale-110 transition duration-500" />
-                <div className="absolute w-64 h-64 rounded-full border border-blue-400/30 animate-float-slow blur-md" />
-              </div>
-
-              {/* Corner Shapes */}
-              <div className="absolute -top-6 -right-6 w-10 h-10 bg-accent/30 rounded-full blur-xl animate-float" />
-              <div className="absolute -bottom-8 -left-8 w-12 h-12 bg-primary/30 rounded-full blur-2xl animate-float-slow" />
-
-              {/* Dashed Spinner */}
-              <div className="absolute -bottom-10 right-1/2 translate-x-1/2 w-32 h-32 border-2 border-dashed border-muted-foreground rounded-full animate-spin-slow opacity-20" />
-
-              {/* Profile Image */}
-              <div className="rounded-3xl overflow-hidden h-full w-full">
-                <img
-                  src={profileImage}
-                  alt="Yash Doke"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
+          <div className="text-center md:text-left">
+            <p className="inline-block text-1xl mb-1 tracking-wide px-5 py-1 rounded-full bg-gradient-primary text-black font-bold shadow-md transition-all duration-500 ease-in-out">
+              Welcome to my portfolio. I’m
+            </p>
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Yash Doke
+            </h1>
+            <h2 className="text-xl md:text-2xl text-gray-200 mt-2 h-8">
+              <span>{text}</span>
+              <Cursor cursorStyle="|" />
+            </h2>
           </div>
         </div>
-      </div>
 
-      {/* Scroll Down Icon */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ChevronDown className="h-6 w-6 text-muted-foreground" />
+        <p className="text-1xl md:text-lg max-w-3xl mx-auto text-gray-300 text-center animate-fade-in-up delay-200 font-[poppins]">
+          Engineering ideas into reality. <br />
+          Blending code, circuits & creativity to build smarter systems and modern digital experiences.
+        </p>
+
+        <div className="flex justify-center gap-4 animate-fade-in-up delay-300">
+          <Button
+            variant="hero"
+            size="lg"
+            onClick={() => navigate("/about")}
+          >
+            Explore <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => navigate("/contact")}
+          >
+            Contact Me <Mail className="ml-2 h-5 w-5" />
+          </Button>
+        </div>
       </div>
     </section>
   );
 };
+
+export default Hero;
