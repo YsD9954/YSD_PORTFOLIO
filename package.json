@@ -50,7 +50,7 @@
     "emailjs-com": "^3.2.0",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.3.0",
-    "framer-motion": "^12.23.9",
+    "framer-motion": "^12.23.11",
     "input-otp": "^1.2.4",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.462.0",
